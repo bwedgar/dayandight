@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Sunrise</title>
+  <link rel="stylesheet" href="style.css" />
+<script>
+ 
+function color(r,g,b){
+str='#'+r.toString(16).padStart(2, '0')+''+g.toString(16).padStart(2, '0')+''+b.toString(16).padStart(2, '0');
+return str;
+}
+t=0
+
+function rgb(){
+t+=1
+r0=9
+r=(t<r0)?0:Math.min((t-r0)*20,255)
+g0=20
+g=(t<g0)?0:Math.min((t-g0)*10,255)
+b0=0
+b=(t<b0)?0:Math.min((t-b0)* 2,255)
+
+document.getElementById("scores").innerHTML=t+" "+r+" "+g+". "+b
+document.getElementById("colourSwatch").style.backgroundColor = 
+color(Math.ceil(r),Math.ceil(g),Math.ceil(b));
+}
+
+addEventListener('load', function(e) {
+setInterval(function(){rgb()}, 200);
+ 
+
+}
+</script>
+</head>
+<body>
+  <h1>colourSwatch</h1>
+  <div id="colourSwatch">swatch<br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+<p id="scores"></p>
+  <script src="script.js"></script>
+</body>
+</html>
